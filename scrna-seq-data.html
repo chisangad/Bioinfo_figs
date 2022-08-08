@@ -118,6 +118,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -196,68 +218,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 4</span> scRNA-seq data<a href="scrna-seq-data.html#scrna-seq-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="background-1" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Background<a href="scrna-seq-data.html#background-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As discussed previously <a href="prerequisites.html#scranseqback">2.1.2</a>, processed counts from the <a href="https://chisangad.github.io/scRNAseqtut/index.html">scRNA-seq workshop</a> are used here to demonstrate the different types of figures that can be generated for publications.</p>
+<p>As discussed previously in section <a href="prerequisites.html#scranseqback">2.1.2</a>, processed counts from the <a href="https://chisangad.github.io/scRNAseqtut/index.html">scRNA-seq workshop</a> are used here to demonstrate the different types of figures that can be generated for publications from scRNA-seq.</p>
 </div>
 <div id="tsne-plots" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> tSNE plots<a href="scrna-seq-data.html#tsne-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>t-distributed stochastic neighbor embedding (t-SNE) is a statistical method for visualizing high-dimensional data by giving each data point a location in a two or three-dimensional map. It is a dimensionality reduction technique which is a way to graphically simplify very large datasets.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="scrna-seq-data.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="scrna-seq-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span></code></pre></div>
 <pre><code>## Attaching SeuratObject</code></pre>
 <pre><code>## Attaching sp</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="scrna-seq-data.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb4-2"><a href="scrna-seq-data.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;Counts_scRNA-norm.RData&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="scrna-seq-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
-<span id="cb5-2"><a href="scrna-seq-data.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
-<span id="cb5-3"><a href="scrna-seq-data.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span>,</span>
-<span id="cb5-4"><a href="scrna-seq-data.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
-<span id="cb5-5"><a href="scrna-seq-data.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb5-6"><a href="scrna-seq-data.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T,</span>
-<span id="cb5-7"><a href="scrna-seq-data.html#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">DiscretePalette</span>(<span class="fu">length</span>(<span class="fu">levels</span>(<span class="fu">Idents</span>(</span>
-<span id="cb5-8"><a href="scrna-seq-data.html#cb5-8" aria-hidden="true" tabindex="-1"></a>    counts_st</span>
-<span id="cb5-9"><a href="scrna-seq-data.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  ))))</span>
-<span id="cb5-10"><a href="scrna-seq-data.html#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="scrna-seq-data.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
-<span id="cb6-2"><a href="scrna-seq-data.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
-<span id="cb6-3"><a href="scrna-seq-data.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span>,</span>
-<span id="cb6-4"><a href="scrna-seq-data.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
-<span id="cb6-5"><a href="scrna-seq-data.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.by =</span> <span class="st">&quot;Sample&quot;</span>,</span>
-<span id="cb6-6"><a href="scrna-seq-data.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb6-7"><a href="scrna-seq-data.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T</span>
-<span id="cb6-8"><a href="scrna-seq-data.html#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-3-1.png" width="960" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="scrna-seq-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb28-2"><a href="scrna-seq-data.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;Counts_scRNA-norm.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="scrna-seq-data.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
+<span id="cb29-2"><a href="scrna-seq-data.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
+<span id="cb29-3"><a href="scrna-seq-data.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span>,</span>
+<span id="cb29-4"><a href="scrna-seq-data.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
+<span id="cb29-5"><a href="scrna-seq-data.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb29-6"><a href="scrna-seq-data.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T,</span>
+<span id="cb29-7"><a href="scrna-seq-data.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">DiscretePalette</span>(<span class="fu">length</span>(<span class="fu">levels</span>(<span class="fu">Idents</span>(</span>
+<span id="cb29-8"><a href="scrna-seq-data.html#cb29-8" aria-hidden="true" tabindex="-1"></a>    counts_st</span>
+<span id="cb29-9"><a href="scrna-seq-data.html#cb29-9" aria-hidden="true" tabindex="-1"></a>  ))))</span>
+<span id="cb29-10"><a href="scrna-seq-data.html#cb29-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-17-1.png" width="960" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="scrna-seq-data.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
+<span id="cb30-2"><a href="scrna-seq-data.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
+<span id="cb30-3"><a href="scrna-seq-data.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span>,</span>
+<span id="cb30-4"><a href="scrna-seq-data.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
+<span id="cb30-5"><a href="scrna-seq-data.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.by =</span> <span class="st">&quot;Sample&quot;</span>,</span>
+<span id="cb30-6"><a href="scrna-seq-data.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb30-7"><a href="scrna-seq-data.html#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T</span>
+<span id="cb30-8"><a href="scrna-seq-data.html#cb30-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-18-1.png" width="960" /></p>
 </div>
 <div id="umap" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> uMAP<a href="scrna-seq-data.html#umap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Optionally, we can also perform dimension reductionality reduction using Uniform Manifold Approximation and Projection (UMAP). UMAP is a dimension reduction technique that can be used for visualization similarly to t-SNE, but also for general non-linear dimension reduction.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="scrna-seq-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
-<span id="cb7-2"><a href="scrna-seq-data.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
-<span id="cb7-3"><a href="scrna-seq-data.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;umap&quot;</span>,</span>
-<span id="cb7-4"><a href="scrna-seq-data.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
-<span id="cb7-5"><a href="scrna-seq-data.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb7-6"><a href="scrna-seq-data.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T,</span>
-<span id="cb7-7"><a href="scrna-seq-data.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">DiscretePalette</span>(<span class="fu">length</span>(<span class="fu">levels</span>(<span class="fu">Idents</span>(</span>
-<span id="cb7-8"><a href="scrna-seq-data.html#cb7-8" aria-hidden="true" tabindex="-1"></a>    counts_st</span>
-<span id="cb7-9"><a href="scrna-seq-data.html#cb7-9" aria-hidden="true" tabindex="-1"></a>  ))))</span>
-<span id="cb7-10"><a href="scrna-seq-data.html#cb7-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="scrna-seq-data.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
-<span id="cb8-2"><a href="scrna-seq-data.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
-<span id="cb8-3"><a href="scrna-seq-data.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;umap&quot;</span>,</span>
-<span id="cb8-4"><a href="scrna-seq-data.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
-<span id="cb8-5"><a href="scrna-seq-data.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.by =</span> <span class="st">&quot;Sample&quot;</span>,</span>
-<span id="cb8-6"><a href="scrna-seq-data.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb8-7"><a href="scrna-seq-data.html#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T</span>
-<span id="cb8-8"><a href="scrna-seq-data.html#cb8-8" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="scrna-seq-data.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
+<span id="cb31-2"><a href="scrna-seq-data.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
+<span id="cb31-3"><a href="scrna-seq-data.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;umap&quot;</span>,</span>
+<span id="cb31-4"><a href="scrna-seq-data.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
+<span id="cb31-5"><a href="scrna-seq-data.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb31-6"><a href="scrna-seq-data.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T,</span>
+<span id="cb31-7"><a href="scrna-seq-data.html#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">DiscretePalette</span>(<span class="fu">length</span>(<span class="fu">levels</span>(<span class="fu">Idents</span>(</span>
+<span id="cb31-8"><a href="scrna-seq-data.html#cb31-8" aria-hidden="true" tabindex="-1"></a>    counts_st</span>
+<span id="cb31-9"><a href="scrna-seq-data.html#cb31-9" aria-hidden="true" tabindex="-1"></a>  ))))</span>
+<span id="cb31-10"><a href="scrna-seq-data.html#cb31-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-19-1.png" width="768" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="scrna-seq-data.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
+<span id="cb32-2"><a href="scrna-seq-data.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
+<span id="cb32-3"><a href="scrna-seq-data.html#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;umap&quot;</span>,</span>
+<span id="cb32-4"><a href="scrna-seq-data.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
+<span id="cb32-5"><a href="scrna-seq-data.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.by =</span> <span class="st">&quot;Sample&quot;</span>,</span>
+<span id="cb32-6"><a href="scrna-seq-data.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb32-7"><a href="scrna-seq-data.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T</span>
+<span id="cb32-8"><a href="scrna-seq-data.html#cb32-8" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-20-1.png" width="768" /></p>
 <p>To identify differentially expressed genes between clusters we can use the <em>FindMarker</em> function in Seurat. As an example, DE genes between clusters 0 and 1 are computed below.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="scrna-seq-data.html#cb9-1" aria-hidden="true" tabindex="-1"></a>DE.cluster0_1 <span class="ot">&lt;-</span> <span class="fu">FindMarkers</span>(</span>
-<span id="cb9-2"><a href="scrna-seq-data.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
-<span id="cb9-3"><a href="scrna-seq-data.html#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="at">ident.1 =</span> <span class="dv">0</span>,</span>
-<span id="cb9-4"><a href="scrna-seq-data.html#cb9-4" aria-hidden="true" tabindex="-1"></a> <span class="at">ident.2 =</span> <span class="dv">1</span>,</span>
-<span id="cb9-5"><a href="scrna-seq-data.html#cb9-5" aria-hidden="true" tabindex="-1"></a> <span class="at">verbose =</span> F)</span>
-<span id="cb9-6"><a href="scrna-seq-data.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DE.cluster0_1[<span class="fu">order</span>(<span class="fu">abs</span>(DE.cluster0_1<span class="sc">$</span>avg_log2FC), </span>
-<span id="cb9-7"><a href="scrna-seq-data.html#cb9-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">decreasing =</span> T),])</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="scrna-seq-data.html#cb33-1" aria-hidden="true" tabindex="-1"></a>DE.cluster0_1 <span class="ot">&lt;-</span> <span class="fu">FindMarkers</span>(</span>
+<span id="cb33-2"><a href="scrna-seq-data.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
+<span id="cb33-3"><a href="scrna-seq-data.html#cb33-3" aria-hidden="true" tabindex="-1"></a> <span class="at">ident.1 =</span> <span class="dv">0</span>,</span>
+<span id="cb33-4"><a href="scrna-seq-data.html#cb33-4" aria-hidden="true" tabindex="-1"></a> <span class="at">ident.2 =</span> <span class="dv">1</span>,</span>
+<span id="cb33-5"><a href="scrna-seq-data.html#cb33-5" aria-hidden="true" tabindex="-1"></a> <span class="at">verbose =</span> F)</span>
+<span id="cb33-6"><a href="scrna-seq-data.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DE.cluster0_1[<span class="fu">order</span>(<span class="fu">abs</span>(DE.cluster0_1<span class="sc">$</span>avg_log2FC), </span>
+<span id="cb33-7"><a href="scrna-seq-data.html#cb33-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">decreasing =</span> T),])</span></code></pre></div>
 <pre><code>##                p_val avg_log2FC pct.1 pct.2     p_val_adj
 ## CD74    0.000000e+00  -5.891577 0.008 1.000  0.000000e+00
 ## IGHM    0.000000e+00  -5.729445 0.000 0.998  0.000000e+00
@@ -269,10 +291,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="heatmaps-1" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Heatmaps<a href="scrna-seq-data.html#heatmaps-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Marker genes which can be used to uniquely identify each of the clusters are identified using the <em>FindAllMarkers</em> function.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="scrna-seq-data.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb11-2"><a href="scrna-seq-data.html#cb11-2" aria-hidden="true" tabindex="-1"></a>all.markers <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="scrna-seq-data.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="scrna-seq-data.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">order_by =</span> avg_log2FC)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="scrna-seq-data.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb35-2"><a href="scrna-seq-data.html#cb35-2" aria-hidden="true" tabindex="-1"></a>all.markers <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="scrna-seq-data.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="scrna-seq-data.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">order_by =</span> avg_log2FC)</span></code></pre></div>
 <pre><code>## # A tibble: 35 × 7
 ## # Groups:   cluster [7]
 ##        p_val avg_log2FC pct.1 pct.2 p_val_adj cluster gene   
@@ -289,92 +311,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 0              3.48  0.999 0.033 0         1       HLA-DRA
 ## # … with 25 more rows
 ## # ℹ Use `print(n = ...)` to see more rows</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="scrna-seq-data.html#cb13-1" aria-hidden="true" tabindex="-1"></a>top10.markers<span class="ot">&lt;-</span>all.markers <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="scrna-seq-data.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="scrna-seq-data.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">order_by =</span> avg_log2FC)</span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="scrna-seq-data.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DoHeatmap</span>(counts_st, <span class="at">features =</span> top10.markers<span class="sc">$</span>gene)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-10-1.png" width="960" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="scrna-seq-data.html#cb37-1" aria-hidden="true" tabindex="-1"></a>top10.markers<span class="ot">&lt;-</span>all.markers <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="scrna-seq-data.html#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="scrna-seq-data.html#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">order_by =</span> avg_log2FC)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="scrna-seq-data.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DoHeatmap</span>(counts_st, <span class="at">features =</span> top10.markers<span class="sc">$</span>gene)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-25-1.png" width="960" /></p>
 </div>
 <div id="feature-plots" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Feature plots<a href="scrna-seq-data.html#feature-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can also highlight the expression of genes of interest on the clusters by way of a tSNE plot.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="scrna-seq-data.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Get the top marker gene per cluster</span></span>
-<span id="cb15-2"><a href="scrna-seq-data.html#cb15-2" aria-hidden="true" tabindex="-1"></a>top.markers<span class="ot">&lt;-</span>all.markers <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="scrna-seq-data.html#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="scrna-seq-data.html#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">order_by =</span> avg_log2FC)</span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="scrna-seq-data.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">FeaturePlot</span>(</span>
-<span id="cb16-2"><a href="scrna-seq-data.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
-<span id="cb16-3"><a href="scrna-seq-data.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">features =</span> top.markers<span class="sc">$</span>gene,</span>
-<span id="cb16-4"><a href="scrna-seq-data.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,</span>
-<span id="cb16-5"><a href="scrna-seq-data.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
-<span id="cb16-6"><a href="scrna-seq-data.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span></span>
-<span id="cb16-7"><a href="scrna-seq-data.html#cb16-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-12-1.png" width="960" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="scrna-seq-data.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Get the top marker gene per cluster</span></span>
+<span id="cb39-2"><a href="scrna-seq-data.html#cb39-2" aria-hidden="true" tabindex="-1"></a>top.markers<span class="ot">&lt;-</span>all.markers <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="scrna-seq-data.html#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(cluster) <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="scrna-seq-data.html#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice_max</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">order_by =</span> avg_log2FC)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="scrna-seq-data.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">FeaturePlot</span>(</span>
+<span id="cb40-2"><a href="scrna-seq-data.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
+<span id="cb40-3"><a href="scrna-seq-data.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">features =</span> top.markers<span class="sc">$</span>gene,</span>
+<span id="cb40-4"><a href="scrna-seq-data.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">3</span>,</span>
+<span id="cb40-5"><a href="scrna-seq-data.html#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
+<span id="cb40-6"><a href="scrna-seq-data.html#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span></span>
+<span id="cb40-7"><a href="scrna-seq-data.html#cb40-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-27-1.png" width="960" /></p>
 <p>Alternatively, we can also use violin plots or boxplots to show the expression profile of genes of interest across cells by cluster or any other combination of cells</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="scrna-seq-data.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">VlnPlot</span>(counts_st,</span>
-<span id="cb17-2"><a href="scrna-seq-data.html#cb17-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">features =</span> top.markers<span class="sc">$</span>gene,</span>
-<span id="cb17-3"><a href="scrna-seq-data.html#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">cols =</span> <span class="fu">DiscretePalette</span>(<span class="fu">length</span>(<span class="fu">unique</span>(</span>
-<span id="cb17-4"><a href="scrna-seq-data.html#cb17-4" aria-hidden="true" tabindex="-1"></a>          counts_st<span class="sc">$</span>seurat_clusters</span>
-<span id="cb17-5"><a href="scrna-seq-data.html#cb17-5" aria-hidden="true" tabindex="-1"></a>        ))))</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-13-1.png" width="960" /></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="scrna-seq-data.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb18-2"><a href="scrna-seq-data.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> top.markers<span class="sc">$</span>gene)</span>
-<span id="cb18-3"><a href="scrna-seq-data.html#cb18-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb18-4"><a href="scrna-seq-data.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  n.data <span class="ot">&lt;-</span> counts_st[n, ]</span>
-<span id="cb18-5"><a href="scrna-seq-data.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(</span>
-<span id="cb18-6"><a href="scrna-seq-data.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.numeric</span>(n.data<span class="sc">@</span>assays<span class="sc">$</span>RNA<span class="sc">@</span>data) <span class="sc">~</span> <span class="fu">as.character</span>(n.data<span class="sc">$</span>seurat_clusters),</span>
-<span id="cb18-7"><a href="scrna-seq-data.html#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">DiscretePalette</span>(<span class="fu">length</span>(<span class="fu">unique</span>(</span>
-<span id="cb18-8"><a href="scrna-seq-data.html#cb18-8" aria-hidden="true" tabindex="-1"></a>      counts_st<span class="sc">$</span>seurat_clusters</span>
-<span id="cb18-9"><a href="scrna-seq-data.html#cb18-9" aria-hidden="true" tabindex="-1"></a>    ))),</span>
-<span id="cb18-10"><a href="scrna-seq-data.html#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Cluster&quot;</span>,</span>
-<span id="cb18-11"><a href="scrna-seq-data.html#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Expression Level&quot;</span>,</span>
-<span id="cb18-12"><a href="scrna-seq-data.html#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> n</span>
-<span id="cb18-13"><a href="scrna-seq-data.html#cb18-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-14"><a href="scrna-seq-data.html#cb18-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-14-1.png" width="960" /></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="scrna-seq-data.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">VlnPlot</span>(counts_st,</span>
+<span id="cb41-2"><a href="scrna-seq-data.html#cb41-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">features =</span> top.markers<span class="sc">$</span>gene,</span>
+<span id="cb41-3"><a href="scrna-seq-data.html#cb41-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">cols =</span> <span class="fu">DiscretePalette</span>(<span class="fu">length</span>(<span class="fu">unique</span>(</span>
+<span id="cb41-4"><a href="scrna-seq-data.html#cb41-4" aria-hidden="true" tabindex="-1"></a>          counts_st<span class="sc">$</span>seurat_clusters</span>
+<span id="cb41-5"><a href="scrna-seq-data.html#cb41-5" aria-hidden="true" tabindex="-1"></a>        ))))</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-28-1.png" width="960" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="scrna-seq-data.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb42-2"><a href="scrna-seq-data.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> top.markers<span class="sc">$</span>gene)</span>
+<span id="cb42-3"><a href="scrna-seq-data.html#cb42-3" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb42-4"><a href="scrna-seq-data.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  n.data <span class="ot">&lt;-</span> counts_st[n, ]</span>
+<span id="cb42-5"><a href="scrna-seq-data.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(</span>
+<span id="cb42-6"><a href="scrna-seq-data.html#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.numeric</span>(n.data<span class="sc">@</span>assays<span class="sc">$</span>RNA<span class="sc">@</span>data) <span class="sc">~</span> <span class="fu">as.character</span>(n.data<span class="sc">$</span>seurat_clusters),</span>
+<span id="cb42-7"><a href="scrna-seq-data.html#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">DiscretePalette</span>(<span class="fu">length</span>(<span class="fu">unique</span>(</span>
+<span id="cb42-8"><a href="scrna-seq-data.html#cb42-8" aria-hidden="true" tabindex="-1"></a>      counts_st<span class="sc">$</span>seurat_clusters</span>
+<span id="cb42-9"><a href="scrna-seq-data.html#cb42-9" aria-hidden="true" tabindex="-1"></a>    ))),</span>
+<span id="cb42-10"><a href="scrna-seq-data.html#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Cluster&quot;</span>,</span>
+<span id="cb42-11"><a href="scrna-seq-data.html#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Expression Level&quot;</span>,</span>
+<span id="cb42-12"><a href="scrna-seq-data.html#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> n</span>
+<span id="cb42-13"><a href="scrna-seq-data.html#cb42-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb42-14"><a href="scrna-seq-data.html#cb42-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-29-1.png" width="960" /></p>
 </div>
 <div id="cell-annotation" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Cell annotation<a href="scrna-seq-data.html#cell-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An unbiased cell type recognition is performed using <strong>SingleR</strong>. <strong>celldex</strong> has a range of annotations derived from Bulk RNA-seq data that can be used to annotate the identified clusters above. Here, we use the Human Primary Cell Atlas database as an example.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="scrna-seq-data.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SingleR)</span>
-<span id="cb19-2"><a href="scrna-seq-data.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SingleCellExperiment)</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="scrna-seq-data.html#cb20-1" aria-hidden="true" tabindex="-1"></a>cell.sce<span class="ot">&lt;-</span> <span class="fu">as.SingleCellExperiment</span>(counts_st)</span>
-<span id="cb20-2"><a href="scrna-seq-data.html#cb20-2" aria-hidden="true" tabindex="-1"></a>annot<span class="ot">&lt;-</span>celldex<span class="sc">::</span><span class="fu">HumanPrimaryCellAtlasData</span>()</span>
-<span id="cb20-3"><a href="scrna-seq-data.html#cb20-3" aria-hidden="true" tabindex="-1"></a>cell.annots <span class="ot">&lt;-</span> <span class="fu">SingleR</span>(</span>
-<span id="cb20-4"><a href="scrna-seq-data.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">test =</span> cell.sce,</span>
-<span id="cb20-5"><a href="scrna-seq-data.html#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ref =</span> annot,</span>
-<span id="cb20-6"><a href="scrna-seq-data.html#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">clusters =</span> cell.sce<span class="sc">$</span>seurat_clusters,</span>
-<span id="cb20-7"><a href="scrna-seq-data.html#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> annot<span class="sc">$</span>label.main)</span>
-<span id="cb20-8"><a href="scrna-seq-data.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="scrna-seq-data.html#cb20-9" aria-hidden="true" tabindex="-1"></a>cell.annots.fine<span class="ot">&lt;-</span><span class="fu">SingleR</span>(</span>
-<span id="cb20-10"><a href="scrna-seq-data.html#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">test =</span> cell.sce,</span>
-<span id="cb20-11"><a href="scrna-seq-data.html#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ref =</span> annot,</span>
-<span id="cb20-12"><a href="scrna-seq-data.html#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">clusters =</span> cell.sce<span class="sc">$</span>seurat_clusters,</span>
-<span id="cb20-13"><a href="scrna-seq-data.html#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> annot<span class="sc">$</span>label.fine)</span>
-<span id="cb20-14"><a href="scrna-seq-data.html#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-15"><a href="scrna-seq-data.html#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(cell.annots,cell.annots.fine,<span class="at">file =</span> <span class="st">&quot;Annotations.RData&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="scrna-seq-data.html#cb21-1" aria-hidden="true" tabindex="-1"></a>counts_st <span class="ot">&lt;-</span></span>
-<span id="cb21-2"><a href="scrna-seq-data.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">AddMetaData</span>(counts_st, cell.annots[<span class="fu">match</span>(counts_st<span class="sc">@</span>meta.data<span class="sc">$</span>seurat_clusters,<span class="fu">rownames</span>(cell.annots)), <span class="st">&quot;labels&quot;</span>], <span class="st">&quot;Annot.main&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="scrna-seq-data.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="scrna-seq-data.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
-<span id="cb23-2"><a href="scrna-seq-data.html#cb23-2" aria-hidden="true" tabindex="-1"></a>    counts_st,</span>
-<span id="cb23-3"><a href="scrna-seq-data.html#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span>,</span>
-<span id="cb23-4"><a href="scrna-seq-data.html#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">group.by =</span> <span class="st">&quot;Annot.main&quot;</span>,</span>
-<span id="cb23-5"><a href="scrna-seq-data.html#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> T,</span>
-<span id="cb23-6"><a href="scrna-seq-data.html#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> T,</span>
-<span id="cb23-7"><a href="scrna-seq-data.html#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb23-8"><a href="scrna-seq-data.html#cb23-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-20-1.png" width="960" /></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="scrna-seq-data.html#cb24-1" aria-hidden="true" tabindex="-1"></a>counts_st <span class="ot">&lt;-</span> <span class="fu">AddMetaData</span>(counts_st, cell.annots.fine[<span class="fu">match</span>(counts_st<span class="sc">@</span>meta.data<span class="sc">$</span>seurat_clusters, <span class="fu">rownames</span>(cell.annots.fine)), <span class="st">&quot;labels&quot;</span>], <span class="st">&quot;Annot.fine&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="scrna-seq-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
-<span id="cb25-2"><a href="scrna-seq-data.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
-<span id="cb25-3"><a href="scrna-seq-data.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span>,</span>
-<span id="cb25-4"><a href="scrna-seq-data.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.by =</span> <span class="st">&quot;Annot.fine&quot;</span>,</span>
-<span id="cb25-5"><a href="scrna-seq-data.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
-<span id="cb25-6"><a href="scrna-seq-data.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T,</span>
-<span id="cb25-7"><a href="scrna-seq-data.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.size =</span> <span class="fl">0.1</span></span>
-<span id="cb25-8"><a href="scrna-seq-data.html#cb25-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-22-1.png" width="960" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="scrna-seq-data.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SingleR)</span>
+<span id="cb43-2"><a href="scrna-seq-data.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SingleCellExperiment)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="scrna-seq-data.html#cb44-1" aria-hidden="true" tabindex="-1"></a>cell.sce<span class="ot">&lt;-</span> <span class="fu">as.SingleCellExperiment</span>(counts_st)</span>
+<span id="cb44-2"><a href="scrna-seq-data.html#cb44-2" aria-hidden="true" tabindex="-1"></a>annot<span class="ot">&lt;-</span>celldex<span class="sc">::</span><span class="fu">HumanPrimaryCellAtlasData</span>()</span>
+<span id="cb44-3"><a href="scrna-seq-data.html#cb44-3" aria-hidden="true" tabindex="-1"></a>cell.annots <span class="ot">&lt;-</span> <span class="fu">SingleR</span>(</span>
+<span id="cb44-4"><a href="scrna-seq-data.html#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">test =</span> cell.sce,</span>
+<span id="cb44-5"><a href="scrna-seq-data.html#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ref =</span> annot,</span>
+<span id="cb44-6"><a href="scrna-seq-data.html#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">clusters =</span> cell.sce<span class="sc">$</span>seurat_clusters,</span>
+<span id="cb44-7"><a href="scrna-seq-data.html#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> annot<span class="sc">$</span>label.main)</span>
+<span id="cb44-8"><a href="scrna-seq-data.html#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="scrna-seq-data.html#cb44-9" aria-hidden="true" tabindex="-1"></a>cell.annots.fine<span class="ot">&lt;-</span><span class="fu">SingleR</span>(</span>
+<span id="cb44-10"><a href="scrna-seq-data.html#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">test =</span> cell.sce,</span>
+<span id="cb44-11"><a href="scrna-seq-data.html#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ref =</span> annot,</span>
+<span id="cb44-12"><a href="scrna-seq-data.html#cb44-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">clusters =</span> cell.sce<span class="sc">$</span>seurat_clusters,</span>
+<span id="cb44-13"><a href="scrna-seq-data.html#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> annot<span class="sc">$</span>label.fine)</span>
+<span id="cb44-14"><a href="scrna-seq-data.html#cb44-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-15"><a href="scrna-seq-data.html#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(cell.annots,cell.annots.fine,<span class="at">file =</span> <span class="st">&quot;Annotations.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="scrna-seq-data.html#cb45-1" aria-hidden="true" tabindex="-1"></a>counts_st <span class="ot">&lt;-</span></span>
+<span id="cb45-2"><a href="scrna-seq-data.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">AddMetaData</span>(counts_st, cell.annots[<span class="fu">match</span>(counts_st<span class="sc">@</span>meta.data<span class="sc">$</span>seurat_clusters,<span class="fu">rownames</span>(cell.annots)), <span class="st">&quot;labels&quot;</span>], <span class="st">&quot;Annot.main&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="scrna-seq-data.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="scrna-seq-data.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
+<span id="cb47-2"><a href="scrna-seq-data.html#cb47-2" aria-hidden="true" tabindex="-1"></a>    counts_st,</span>
+<span id="cb47-3"><a href="scrna-seq-data.html#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span>,</span>
+<span id="cb47-4"><a href="scrna-seq-data.html#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">group.by =</span> <span class="st">&quot;Annot.main&quot;</span>,</span>
+<span id="cb47-5"><a href="scrna-seq-data.html#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> T,</span>
+<span id="cb47-6"><a href="scrna-seq-data.html#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">repel =</span> T,</span>
+<span id="cb47-7"><a href="scrna-seq-data.html#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pt.size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb47-8"><a href="scrna-seq-data.html#cb47-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-35-1.png" width="960" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="scrna-seq-data.html#cb48-1" aria-hidden="true" tabindex="-1"></a>counts_st <span class="ot">&lt;-</span> <span class="fu">AddMetaData</span>(counts_st, cell.annots.fine[<span class="fu">match</span>(counts_st<span class="sc">@</span>meta.data<span class="sc">$</span>seurat_clusters, <span class="fu">rownames</span>(cell.annots.fine)), <span class="st">&quot;labels&quot;</span>], <span class="st">&quot;Annot.fine&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="scrna-seq-data.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">DimPlot</span>(</span>
+<span id="cb49-2"><a href="scrna-seq-data.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  counts_st,</span>
+<span id="cb49-3"><a href="scrna-seq-data.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">reduction =</span> <span class="st">&quot;tsne&quot;</span>,</span>
+<span id="cb49-4"><a href="scrna-seq-data.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group.by =</span> <span class="st">&quot;Annot.fine&quot;</span>,</span>
+<span id="cb49-5"><a href="scrna-seq-data.html#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> T,</span>
+<span id="cb49-6"><a href="scrna-seq-data.html#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">repel =</span> T,</span>
+<span id="cb49-7"><a href="scrna-seq-data.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pt.size =</span> <span class="fl">0.1</span></span>
+<span id="cb49-8"><a href="scrna-seq-data.html#cb49-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-37-1.png" width="960" /></p>
 </div>
 <div id="trajectory-analysis" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Trajectory analysis<a href="scrna-seq-data.html#trajectory-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -382,78 +404,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- In many biological processes, cells do not progress in perfect synchrony. In single-cell expression studies of processes such as cell differentiation, captured cells might be widely distributed in terms of progress. That is, in a population of cells captured at exactly the same time, some cells might be far along, while others might not yet even have begun the process. This asynchrony creates major problems when you want to understand the sequence of regulatory changes that occur as cells transition from one state to the next. Tracking the expression across cells captured at the same time produces a very compressed sense of a gene's kinetics, and the apparent variability of that gene's expression will be very high. -->
 <!-- By ordering each cell according to its progress along a learned trajectory, Monocle alleviates the problems that arise due to asynchrony. Instead of tracking changes in expression as a function of time, Monocle tracks changes as a function of progress along the trajectory, which we term "pseudotime". Pseudotime is an abstract unit of progress: it's simply the distance between a cell and the start of the trajectory, measured along the shortest path. The trajectory's total length is defined in terms of the total amount of transcriptional change that a cell undergoes as it moves from the starting state to the end state.](https://cole-trapnell-lab.github.io/monocle3/docs/trajectories/#order-cells:~:text=What%20is-,pseudotime,-%3F) -->
 <p>Pseudotime analysis of the cells identified in the dataset was performed using <strong>Monocle2</strong>.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="scrna-seq-data.html#cb26-1" aria-hidden="true" tabindex="-1"></a>mono2.learn.traject <span class="ot">&lt;-</span></span>
-<span id="cb26-2"><a href="scrna-seq-data.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(X_counts,</span>
-<span id="cb26-3"><a href="scrna-seq-data.html#cb26-3" aria-hidden="true" tabindex="-1"></a>           these.cell.types) {</span>
-<span id="cb26-4"><a href="scrna-seq-data.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(monocle) <span class="co"># It has to be Monocle 2.</span></span>
-<span id="cb26-5"><a href="scrna-seq-data.html#cb26-5" aria-hidden="true" tabindex="-1"></a>    rds.fname <span class="ot">&lt;-</span><span class="st">&quot;Trajectory-cds.rds&quot;</span></span>
-<span id="cb26-6"><a href="scrna-seq-data.html#cb26-6" aria-hidden="true" tabindex="-1"></a>    gsndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">gene_short_name =</span> <span class="fu">rownames</span>(X_counts))</span>
-<span id="cb26-7"><a href="scrna-seq-data.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    csndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cell.type =</span> these.cell.types)</span>
-<span id="cb26-8"><a href="scrna-seq-data.html#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames</span>(gsndf) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(X_counts)</span>
-<span id="cb26-9"><a href="scrna-seq-data.html#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames</span>(csndf) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(X_counts)</span>
-<span id="cb26-10"><a href="scrna-seq-data.html#cb26-10" aria-hidden="true" tabindex="-1"></a>    pd <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;AnnotatedDataFrame&quot;</span>, <span class="at">data =</span> csndf)</span>
-<span id="cb26-11"><a href="scrna-seq-data.html#cb26-11" aria-hidden="true" tabindex="-1"></a>    fd <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;AnnotatedDataFrame&quot;</span>, <span class="at">data =</span> gsndf)</span>
-<span id="cb26-12"><a href="scrna-seq-data.html#cb26-12" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span></span>
-<span id="cb26-13"><a href="scrna-seq-data.html#cb26-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">newCellDataSet</span>(</span>
-<span id="cb26-14"><a href="scrna-seq-data.html#cb26-14" aria-hidden="true" tabindex="-1"></a>        X_counts,</span>
-<span id="cb26-15"><a href="scrna-seq-data.html#cb26-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">phenoData =</span> pd,</span>
-<span id="cb26-16"><a href="scrna-seq-data.html#cb26-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">featureData =</span> fd,</span>
-<span id="cb26-17"><a href="scrna-seq-data.html#cb26-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">expressionFamily =</span> <span class="fu">negbinomial.size</span>()</span>
-<span id="cb26-18"><a href="scrna-seq-data.html#cb26-18" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb26-19"><a href="scrna-seq-data.html#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(cds)</span>
-<span id="cb26-20"><a href="scrna-seq-data.html#cb26-20" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">estimateSizeFactors</span>(cds)</span>
-<span id="cb26-21"><a href="scrna-seq-data.html#cb26-21" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">estimateDispersions</span>(cds)</span>
-<span id="cb26-22"><a href="scrna-seq-data.html#cb26-22" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">detectGenes</span>(cds, <span class="at">min_expr =</span> <span class="fl">0.1</span>)</span>
-<span id="cb26-23"><a href="scrna-seq-data.html#cb26-23" aria-hidden="true" tabindex="-1"></a>    disp_table <span class="ot">&lt;-</span> <span class="fu">dispersionTable</span>(cds)</span>
-<span id="cb26-24"><a href="scrna-seq-data.html#cb26-24" aria-hidden="true" tabindex="-1"></a>    ordering_genes <span class="ot">&lt;-</span> <span class="fu">subset</span>(disp_table, mean_expression <span class="sc">&gt;=</span> <span class="fl">0.1</span>)</span>
-<span id="cb26-25"><a href="scrna-seq-data.html#cb26-25" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">setOrderingFilter</span>(cds, ordering_genes)</span>
-<span id="cb26-26"><a href="scrna-seq-data.html#cb26-26" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">reduceDimension</span>(cds)</span>
-<span id="cb26-27"><a href="scrna-seq-data.html#cb26-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">saveRDS</span>(cds , rds.fname)</span>
-<span id="cb26-28"><a href="scrna-seq-data.html#cb26-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="scrna-seq-data.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mono2.learn.traject</span>(</span>
-<span id="cb27-2"><a href="scrna-seq-data.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  X_counts <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(counts_st<span class="sc">@</span>assays<span class="sc">$</span>RNA<span class="sc">@</span>counts),</span>
-<span id="cb27-3"><a href="scrna-seq-data.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  these.cell.types <span class="ot">&lt;-</span> counts_st[[]]<span class="sc">$</span>seurat_clusters</span>
-<span id="cb27-4"><a href="scrna-seq-data.html#cb27-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="scrna-seq-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a>mono.rds <span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="st">&quot;Trajectory-cds.rds&quot;</span>)</span>
-<span id="cb28-2"><a href="scrna-seq-data.html#cb28-2" aria-hidden="true" tabindex="-1"></a>mono.Tree <span class="ot">&lt;-</span> <span class="fu">t</span>(mono.rds<span class="sc">@</span>reducedDimS)</span></code></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="scrna-seq-data.html#cb29-1" aria-hidden="true" tabindex="-1"></a>do.Traj.lines <span class="ot">&lt;-</span> <span class="cf">function</span>(traj) {</span>
-<span id="cb29-2"><a href="scrna-seq-data.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(traj<span class="sc">@</span>minSpanningTree[[]])) {</span>
-<span id="cb29-3"><a href="scrna-seq-data.html#cb29-3" aria-hidden="true" tabindex="-1"></a>    p1no <span class="ot">&lt;-</span> <span class="fu">unlist</span>(traj<span class="sc">@</span>minSpanningTree[[i]])[<span class="dv">1</span>]</span>
-<span id="cb29-4"><a href="scrna-seq-data.html#cb29-4" aria-hidden="true" tabindex="-1"></a>    p2no <span class="ot">&lt;-</span> <span class="fu">unlist</span>(traj<span class="sc">@</span>minSpanningTree[[i]])[<span class="dv">2</span>]</span>
-<span id="cb29-5"><a href="scrna-seq-data.html#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(</span>
-<span id="cb29-6"><a href="scrna-seq-data.html#cb29-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(traj<span class="sc">@</span>reducedDimK[<span class="dv">1</span>, p1no],</span>
-<span id="cb29-7"><a href="scrna-seq-data.html#cb29-7" aria-hidden="true" tabindex="-1"></a>        traj<span class="sc">@</span>reducedDimK[<span class="dv">1</span>, p2no]),</span>
-<span id="cb29-8"><a href="scrna-seq-data.html#cb29-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(traj<span class="sc">@</span>reducedDimK[<span class="dv">2</span>, p1no],</span>
-<span id="cb29-9"><a href="scrna-seq-data.html#cb29-9" aria-hidden="true" tabindex="-1"></a>        traj<span class="sc">@</span>reducedDimK[<span class="dv">2</span>, p2no]),</span>
-<span id="cb29-10"><a href="scrna-seq-data.html#cb29-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span></span>
-<span id="cb29-11"><a href="scrna-seq-data.html#cb29-11" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb29-12"><a href="scrna-seq-data.html#cb29-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb29-13"><a href="scrna-seq-data.html#cb29-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="scrna-seq-data.html#cb30-1" aria-hidden="true" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> counts_st[[]]<span class="sc">$</span>seurat_clusters</span>
-<span id="cb30-2"><a href="scrna-seq-data.html#cb30-2" aria-hidden="true" tabindex="-1"></a>cols.traj <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;pink&quot;</span>)</span>
-<span id="cb30-3"><a href="scrna-seq-data.html#cb30-3" aria-hidden="true" tabindex="-1"></a>traj.cols <span class="ot">&lt;-</span>  cols.traj[clusters]</span>
-<span id="cb30-4"><a href="scrna-seq-data.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb30-5"><a href="scrna-seq-data.html#cb30-5" aria-hidden="true" tabindex="-1"></a>    mono.Tree,</span>
-<span id="cb30-6"><a href="scrna-seq-data.html#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex =</span> <span class="fl">0.7</span>,</span>
-<span id="cb30-7"><a href="scrna-seq-data.html#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb30-8"><a href="scrna-seq-data.html#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg =</span> traj.cols,</span>
-<span id="cb30-9"><a href="scrna-seq-data.html#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> traj.cols,</span>
-<span id="cb30-10"><a href="scrna-seq-data.html#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Component 1&quot;</span>,</span>
-<span id="cb30-11"><a href="scrna-seq-data.html#cb30-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Component 2&quot;</span>,</span>
-<span id="cb30-12"><a href="scrna-seq-data.html#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.axis =</span> <span class="fl">0.8</span>,</span>
-<span id="cb30-13"><a href="scrna-seq-data.html#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.lab =</span> <span class="fl">0.9</span></span>
-<span id="cb30-14"><a href="scrna-seq-data.html#cb30-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb30-15"><a href="scrna-seq-data.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="fu">do.Traj.lines</span>(mono.rds)</span>
-<span id="cb30-16"><a href="scrna-seq-data.html#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
-<span id="cb30-17"><a href="scrna-seq-data.html#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;bottomright&quot;</span>,</span>
-<span id="cb30-18"><a href="scrna-seq-data.html#cb30-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">levels</span>(clusters),</span>
-<span id="cb30-19"><a href="scrna-seq-data.html#cb30-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb30-20"><a href="scrna-seq-data.html#cb30-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> cols.traj,</span>
-<span id="cb30-21"><a href="scrna-seq-data.html#cb30-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">&quot;n&quot;</span></span>
-<span id="cb30-22"><a href="scrna-seq-data.html#cb30-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-27-1.png" width="768" /></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="scrna-seq-data.html#cb50-1" aria-hidden="true" tabindex="-1"></a>mono2.learn.traject <span class="ot">&lt;-</span></span>
+<span id="cb50-2"><a href="scrna-seq-data.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(X_counts,</span>
+<span id="cb50-3"><a href="scrna-seq-data.html#cb50-3" aria-hidden="true" tabindex="-1"></a>           these.cell.types) {</span>
+<span id="cb50-4"><a href="scrna-seq-data.html#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(monocle) <span class="co"># It has to be Monocle 2.</span></span>
+<span id="cb50-5"><a href="scrna-seq-data.html#cb50-5" aria-hidden="true" tabindex="-1"></a>    rds.fname <span class="ot">&lt;-</span><span class="st">&quot;Trajectory-cds.rds&quot;</span></span>
+<span id="cb50-6"><a href="scrna-seq-data.html#cb50-6" aria-hidden="true" tabindex="-1"></a>    gsndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">gene_short_name =</span> <span class="fu">rownames</span>(X_counts))</span>
+<span id="cb50-7"><a href="scrna-seq-data.html#cb50-7" aria-hidden="true" tabindex="-1"></a>    csndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cell.type =</span> these.cell.types)</span>
+<span id="cb50-8"><a href="scrna-seq-data.html#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames</span>(gsndf) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(X_counts)</span>
+<span id="cb50-9"><a href="scrna-seq-data.html#cb50-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames</span>(csndf) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(X_counts)</span>
+<span id="cb50-10"><a href="scrna-seq-data.html#cb50-10" aria-hidden="true" tabindex="-1"></a>    pd <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;AnnotatedDataFrame&quot;</span>, <span class="at">data =</span> csndf)</span>
+<span id="cb50-11"><a href="scrna-seq-data.html#cb50-11" aria-hidden="true" tabindex="-1"></a>    fd <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;AnnotatedDataFrame&quot;</span>, <span class="at">data =</span> gsndf)</span>
+<span id="cb50-12"><a href="scrna-seq-data.html#cb50-12" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span></span>
+<span id="cb50-13"><a href="scrna-seq-data.html#cb50-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">newCellDataSet</span>(</span>
+<span id="cb50-14"><a href="scrna-seq-data.html#cb50-14" aria-hidden="true" tabindex="-1"></a>        X_counts,</span>
+<span id="cb50-15"><a href="scrna-seq-data.html#cb50-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">phenoData =</span> pd,</span>
+<span id="cb50-16"><a href="scrna-seq-data.html#cb50-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">featureData =</span> fd,</span>
+<span id="cb50-17"><a href="scrna-seq-data.html#cb50-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">expressionFamily =</span> <span class="fu">negbinomial.size</span>()</span>
+<span id="cb50-18"><a href="scrna-seq-data.html#cb50-18" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb50-19"><a href="scrna-seq-data.html#cb50-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(cds)</span>
+<span id="cb50-20"><a href="scrna-seq-data.html#cb50-20" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">estimateSizeFactors</span>(cds)</span>
+<span id="cb50-21"><a href="scrna-seq-data.html#cb50-21" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">estimateDispersions</span>(cds)</span>
+<span id="cb50-22"><a href="scrna-seq-data.html#cb50-22" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">detectGenes</span>(cds, <span class="at">min_expr =</span> <span class="fl">0.1</span>)</span>
+<span id="cb50-23"><a href="scrna-seq-data.html#cb50-23" aria-hidden="true" tabindex="-1"></a>    disp_table <span class="ot">&lt;-</span> <span class="fu">dispersionTable</span>(cds)</span>
+<span id="cb50-24"><a href="scrna-seq-data.html#cb50-24" aria-hidden="true" tabindex="-1"></a>    ordering_genes <span class="ot">&lt;-</span> <span class="fu">subset</span>(disp_table, mean_expression <span class="sc">&gt;=</span> <span class="fl">0.1</span>)</span>
+<span id="cb50-25"><a href="scrna-seq-data.html#cb50-25" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">setOrderingFilter</span>(cds, ordering_genes)</span>
+<span id="cb50-26"><a href="scrna-seq-data.html#cb50-26" aria-hidden="true" tabindex="-1"></a>    cds <span class="ot">&lt;-</span> <span class="fu">reduceDimension</span>(cds)</span>
+<span id="cb50-27"><a href="scrna-seq-data.html#cb50-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">saveRDS</span>(cds , rds.fname)</span>
+<span id="cb50-28"><a href="scrna-seq-data.html#cb50-28" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="scrna-seq-data.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mono2.learn.traject</span>(</span>
+<span id="cb51-2"><a href="scrna-seq-data.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  X_counts <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(counts_st<span class="sc">@</span>assays<span class="sc">$</span>RNA<span class="sc">@</span>counts),</span>
+<span id="cb51-3"><a href="scrna-seq-data.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  these.cell.types <span class="ot">&lt;-</span> counts_st[[]]<span class="sc">$</span>seurat_clusters</span>
+<span id="cb51-4"><a href="scrna-seq-data.html#cb51-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="scrna-seq-data.html#cb52-1" aria-hidden="true" tabindex="-1"></a>mono.rds <span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="st">&quot;Trajectory-cds.rds&quot;</span>)</span>
+<span id="cb52-2"><a href="scrna-seq-data.html#cb52-2" aria-hidden="true" tabindex="-1"></a>mono.Tree <span class="ot">&lt;-</span> <span class="fu">t</span>(mono.rds<span class="sc">@</span>reducedDimS)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="scrna-seq-data.html#cb53-1" aria-hidden="true" tabindex="-1"></a>do.Traj.lines <span class="ot">&lt;-</span> <span class="cf">function</span>(traj) {</span>
+<span id="cb53-2"><a href="scrna-seq-data.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(traj<span class="sc">@</span>minSpanningTree[[]])) {</span>
+<span id="cb53-3"><a href="scrna-seq-data.html#cb53-3" aria-hidden="true" tabindex="-1"></a>    p1no <span class="ot">&lt;-</span> <span class="fu">unlist</span>(traj<span class="sc">@</span>minSpanningTree[[i]])[<span class="dv">1</span>]</span>
+<span id="cb53-4"><a href="scrna-seq-data.html#cb53-4" aria-hidden="true" tabindex="-1"></a>    p2no <span class="ot">&lt;-</span> <span class="fu">unlist</span>(traj<span class="sc">@</span>minSpanningTree[[i]])[<span class="dv">2</span>]</span>
+<span id="cb53-5"><a href="scrna-seq-data.html#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(</span>
+<span id="cb53-6"><a href="scrna-seq-data.html#cb53-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(traj<span class="sc">@</span>reducedDimK[<span class="dv">1</span>, p1no],</span>
+<span id="cb53-7"><a href="scrna-seq-data.html#cb53-7" aria-hidden="true" tabindex="-1"></a>        traj<span class="sc">@</span>reducedDimK[<span class="dv">1</span>, p2no]),</span>
+<span id="cb53-8"><a href="scrna-seq-data.html#cb53-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">c</span>(traj<span class="sc">@</span>reducedDimK[<span class="dv">2</span>, p1no],</span>
+<span id="cb53-9"><a href="scrna-seq-data.html#cb53-9" aria-hidden="true" tabindex="-1"></a>        traj<span class="sc">@</span>reducedDimK[<span class="dv">2</span>, p2no]),</span>
+<span id="cb53-10"><a href="scrna-seq-data.html#cb53-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span></span>
+<span id="cb53-11"><a href="scrna-seq-data.html#cb53-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb53-12"><a href="scrna-seq-data.html#cb53-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb53-13"><a href="scrna-seq-data.html#cb53-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="scrna-seq-data.html#cb54-1" aria-hidden="true" tabindex="-1"></a>clusters <span class="ot">&lt;-</span> counts_st[[]]<span class="sc">$</span>seurat_clusters</span>
+<span id="cb54-2"><a href="scrna-seq-data.html#cb54-2" aria-hidden="true" tabindex="-1"></a>cols.traj <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;pink&quot;</span>)</span>
+<span id="cb54-3"><a href="scrna-seq-data.html#cb54-3" aria-hidden="true" tabindex="-1"></a>traj.cols <span class="ot">&lt;-</span>  cols.traj[clusters]</span>
+<span id="cb54-4"><a href="scrna-seq-data.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb54-5"><a href="scrna-seq-data.html#cb54-5" aria-hidden="true" tabindex="-1"></a>    mono.Tree,</span>
+<span id="cb54-6"><a href="scrna-seq-data.html#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex =</span> <span class="fl">0.7</span>,</span>
+<span id="cb54-7"><a href="scrna-seq-data.html#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb54-8"><a href="scrna-seq-data.html#cb54-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg =</span> traj.cols,</span>
+<span id="cb54-9"><a href="scrna-seq-data.html#cb54-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> traj.cols,</span>
+<span id="cb54-10"><a href="scrna-seq-data.html#cb54-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Component 1&quot;</span>,</span>
+<span id="cb54-11"><a href="scrna-seq-data.html#cb54-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Component 2&quot;</span>,</span>
+<span id="cb54-12"><a href="scrna-seq-data.html#cb54-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.axis =</span> <span class="fl">0.8</span>,</span>
+<span id="cb54-13"><a href="scrna-seq-data.html#cb54-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.lab =</span> <span class="fl">0.9</span></span>
+<span id="cb54-14"><a href="scrna-seq-data.html#cb54-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-15"><a href="scrna-seq-data.html#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="fu">do.Traj.lines</span>(mono.rds)</span>
+<span id="cb54-16"><a href="scrna-seq-data.html#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
+<span id="cb54-17"><a href="scrna-seq-data.html#cb54-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;bottomright&quot;</span>,</span>
+<span id="cb54-18"><a href="scrna-seq-data.html#cb54-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">levels</span>(clusters),</span>
+<span id="cb54-19"><a href="scrna-seq-data.html#cb54-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb54-20"><a href="scrna-seq-data.html#cb54-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> cols.traj,</span>
+<span id="cb54-21"><a href="scrna-seq-data.html#cb54-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">&quot;n&quot;</span></span>
+<span id="cb54-22"><a href="scrna-seq-data.html#cb54-22" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="Bioinfo-figures_files/figure-html/unnamed-chunk-42-1.png" width="768" /></p>
 <p><strong>Session info</strong></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="scrna-seq-data.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="scrna-seq-data.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <pre><code>## R version 4.2.0 (2022-04-22)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
 ## Running under: macOS Big Sur/Monterey 10.16
@@ -471,89 +493,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## other attached packages:
 ##  [1] SingleCellExperiment_1.18.0 SingleR_1.10.0             
-##  [3] SummarizedExperiment_1.26.1 Biobase_2.56.0             
-##  [5] GenomicRanges_1.48.0        GenomeInfoDb_1.32.2        
-##  [7] IRanges_2.30.0              S4Vectors_0.34.0           
-##  [9] BiocGenerics_0.42.0         MatrixGenerics_1.8.1       
-## [11] matrixStats_0.62.0          dplyr_1.0.9                
-## [13] ggplot2_3.3.6               sp_1.5-0                   
-## [15] SeuratObject_4.1.0          Seurat_4.1.1               
+##  [3] SummarizedExperiment_1.26.1 GenomicRanges_1.48.0       
+##  [5] GenomeInfoDb_1.32.2         MatrixGenerics_1.8.1       
+##  [7] matrixStats_0.62.0          dplyr_1.0.9                
+##  [9] ggplot2_3.3.6               sp_1.5-0                   
+## [11] SeuratObject_4.1.0          Seurat_4.1.1               
+## [13] org.Mm.eg.db_3.15.0         GO.db_3.15.0               
+## [15] AnnotationDbi_1.58.0        IRanges_2.30.0             
+## [17] S4Vectors_0.34.0            Biobase_2.56.0             
+## [19] BiocGenerics_0.42.0         Glimma_2.6.0               
+## [21] limma_3.52.2               
 ## 
 ## loaded via a namespace (and not attached):
-##   [1] VGAM_1.1-7                plyr_1.8.7               
-##   [3] igraph_1.3.4              lazyeval_0.2.2           
-##   [5] splines_4.2.0             BiocParallel_1.30.3      
-##   [7] listenv_0.8.0             scattermore_0.8          
-##   [9] fastICA_1.2-3             digest_0.6.29            
-##  [11] htmltools_0.5.3           viridis_0.6.2            
-##  [13] fansi_1.0.3               magrittr_2.0.3           
-##  [15] ScaledMatrix_1.4.0        tensor_1.5               
-##  [17] cluster_2.1.3             ROCR_1.0-11              
-##  [19] limma_3.52.2              globals_0.15.1           
-##  [21] docopt_0.7.1              spatstat.sparse_2.1-1    
-##  [23] colorspace_2.0-3          ggrepel_0.9.1            
-##  [25] xfun_0.31                 sparsesvd_0.2            
-##  [27] RCurl_1.98-1.8            jsonlite_1.8.0           
-##  [29] progressr_0.10.1          spatstat.data_2.2-0      
-##  [31] survival_3.3-1            zoo_1.8-10               
-##  [33] glue_1.6.2                polyclip_1.10-0          
-##  [35] gtable_0.3.0              zlibbioc_1.42.0          
-##  [37] XVector_0.36.0            leiden_0.4.2             
-##  [39] DelayedArray_0.22.0       BiocSingular_1.12.0      
-##  [41] future.apply_1.9.0        abind_1.4-5              
-##  [43] scales_1.2.0              pheatmap_1.0.12          
-##  [45] DBI_1.1.3                 spatstat.random_2.2-0    
-##  [47] miniUI_0.1.1.1            Rcpp_1.0.9               
-##  [49] viridisLite_0.4.0         xtable_1.8-4             
-##  [51] reticulate_1.25           spatstat.core_2.4-4      
-##  [53] rsvd_1.0.5                htmlwidgets_1.5.4        
-##  [55] httr_1.4.3                RColorBrewer_1.1-3       
-##  [57] ellipsis_0.3.2            ica_1.0-3                
-##  [59] pkgconfig_2.0.3           farver_2.1.1             
-##  [61] sass_0.4.2                uwot_0.1.11              
-##  [63] deldir_1.0-6              utf8_1.2.2               
-##  [65] tidyselect_1.1.2          labeling_0.4.2           
-##  [67] rlang_1.0.4               reshape2_1.4.4           
-##  [69] later_1.3.0               munsell_0.5.0            
-##  [71] tools_4.2.0               cachem_1.0.6             
-##  [73] cli_3.3.0                 generics_0.1.3           
-##  [75] ggridges_0.5.3            evaluate_0.15            
-##  [77] stringr_1.4.0             fastmap_1.1.0            
-##  [79] yaml_2.3.5                goftest_1.2-3            
-##  [81] knitr_1.39                fitdistrplus_1.1-8       
-##  [83] DDRTree_0.1.5             purrr_0.3.4              
-##  [85] RANN_2.6.1                sparseMatrixStats_1.8.0  
-##  [87] pbapply_1.5-0             future_1.27.0            
-##  [89] nlme_3.1-158              mime_0.12                
-##  [91] slam_0.1-50               monocle_2.24.1           
-##  [93] ggrastr_1.0.1             compiler_4.2.0           
-##  [95] rstudioapi_0.13           beeswarm_0.4.0           
-##  [97] plotly_4.10.0             png_0.1-7                
-##  [99] spatstat.utils_2.3-1      tibble_3.1.8             
-## [101] bslib_0.4.0               stringi_1.7.8            
-## [103] highr_0.9                 rgeos_0.5-9              
-## [105] lattice_0.20-45           Matrix_1.4-1             
-## [107] HSMMSingleCell_1.16.0     vctrs_0.4.1              
-## [109] pillar_1.8.0              lifecycle_1.0.1          
-## [111] combinat_0.0-8            spatstat.geom_2.4-0      
-## [113] lmtest_0.9-40             jquerylib_0.1.4          
-## [115] BiocNeighbors_1.14.0      RcppAnnoy_0.0.19         
-## [117] data.table_1.14.2         cowplot_1.1.1            
-## [119] bitops_1.0-7              irlba_2.3.5              
-## [121] httpuv_1.6.5              patchwork_1.1.1          
-## [123] R6_2.5.1                  bookdown_0.27            
-## [125] promises_1.2.0.1          KernSmooth_2.23-20       
-## [127] gridExtra_2.3             vipor_0.4.5              
-## [129] parallelly_1.32.1         codetools_0.2-18         
-## [131] MASS_7.3-58.1             assertthat_0.2.1         
-## [133] leidenbase_0.1.11         withr_2.5.0              
-## [135] qlcMatrix_0.9.7           sctransform_0.3.3        
-## [137] GenomeInfoDbData_1.2.8    mgcv_1.8-40              
-## [139] parallel_4.2.0            beachmat_2.12.0          
-## [141] grid_4.2.0                rpart_4.1.16             
-## [143] tidyr_1.2.0               DelayedMatrixStats_1.18.0
-## [145] rmarkdown_2.14            Rtsne_0.16               
-## [147] shiny_1.7.2               ggbeeswarm_0.6.0</code></pre>
+##   [1] utf8_1.2.2                reticulate_1.25          
+##   [3] tidyselect_1.1.2          RSQLite_2.2.15           
+##   [5] htmlwidgets_1.5.4         docopt_0.7.1             
+##   [7] combinat_0.0-8            grid_4.2.0               
+##   [9] BiocParallel_1.30.3       Rtsne_0.16               
+##  [11] ScaledMatrix_1.4.0        munsell_0.5.0            
+##  [13] codetools_0.2-18          ica_1.0-3                
+##  [15] future_1.27.0             miniUI_0.1.1.1           
+##  [17] withr_2.5.0               fastICA_1.2-3            
+##  [19] spatstat.random_2.2-0     colorspace_2.0-3         
+##  [21] progressr_0.10.1          highr_0.9                
+##  [23] knitr_1.39                rstudioapi_0.13          
+##  [25] ROCR_1.0-11               tensor_1.5               
+##  [27] listenv_0.8.0             labeling_0.4.2           
+##  [29] slam_0.1-50               GenomeInfoDbData_1.2.8   
+##  [31] polyclip_1.10-0           pheatmap_1.0.12          
+##  [33] bit64_4.0.5               farver_2.1.1             
+##  [35] parallelly_1.32.1         vctrs_0.4.1              
+##  [37] generics_0.1.3            xfun_0.31                
+##  [39] R6_2.5.1                  ggbeeswarm_0.6.0         
+##  [41] rsvd_1.0.5                VGAM_1.1-7               
+##  [43] locfit_1.5-9.6            bitops_1.0-7             
+##  [45] spatstat.utils_2.3-1      cachem_1.0.6             
+##  [47] DelayedArray_0.22.0       assertthat_0.2.1         
+##  [49] promises_1.2.0.1          scales_1.2.0             
+##  [51] rgeos_0.5-9               beeswarm_0.4.0           
+##  [53] gtable_0.3.0              beachmat_2.12.0          
+##  [55] globals_0.15.1            goftest_1.2-3            
+##  [57] rlang_1.0.4               genefilter_1.78.0        
+##  [59] splines_4.2.0             lazyeval_0.2.2           
+##  [61] spatstat.geom_2.4-0       yaml_2.3.5               
+##  [63] reshape2_1.4.4            abind_1.4-5              
+##  [65] httpuv_1.6.5              tools_4.2.0              
+##  [67] bookdown_0.27             ellipsis_0.3.2           
+##  [69] gplots_3.1.3              spatstat.core_2.4-4      
+##  [71] jquerylib_0.1.4           RColorBrewer_1.1-3       
+##  [73] ggridges_0.5.3            Rcpp_1.0.9               
+##  [75] plyr_1.8.7                sparseMatrixStats_1.8.0  
+##  [77] zlibbioc_1.42.0           purrr_0.3.4              
+##  [79] RCurl_1.98-1.8            rpart_4.1.16             
+##  [81] deldir_1.0-6              viridis_0.6.2            
+##  [83] pbapply_1.5-0             cowplot_1.1.1            
+##  [85] zoo_1.8-10                ggrepel_0.9.1            
+##  [87] cluster_2.1.3             magrittr_2.0.3           
+##  [89] data.table_1.14.2         scattermore_0.8          
+##  [91] lmtest_0.9-40             RANN_2.6.1               
+##  [93] fitdistrplus_1.1-8        patchwork_1.1.1          
+##  [95] mime_0.12                 evaluate_0.15            
+##  [97] xtable_1.8-4              XML_3.99-0.10            
+##  [99] sparsesvd_0.2             gridExtra_2.3            
+## [101] HSMMSingleCell_1.16.0     compiler_4.2.0           
+## [103] tibble_3.1.8              KernSmooth_2.23-20       
+## [105] crayon_1.5.1              htmltools_0.5.3          
+## [107] mgcv_1.8-40               later_1.3.0              
+## [109] tidyr_1.2.0               geneplotter_1.74.0       
+## [111] DBI_1.1.3                 MASS_7.3-58.1            
+## [113] leidenbase_0.1.11         Matrix_1.4-1             
+## [115] cli_3.3.0                 parallel_4.2.0           
+## [117] igraph_1.3.4              pkgconfig_2.0.3          
+## [119] plotly_4.10.0             spatstat.sparse_2.1-1    
+## [121] annotate_1.74.0           vipor_0.4.5              
+## [123] bslib_0.4.0               XVector_0.36.0           
+## [125] stringr_1.4.0             digest_0.6.29            
+## [127] sctransform_0.3.3         RcppAnnoy_0.0.19         
+## [129] DDRTree_0.1.5             spatstat.data_2.2-0      
+## [131] Biostrings_2.64.0         rmarkdown_2.14           
+## [133] leiden_0.4.2              uwot_0.1.11              
+## [135] edgeR_3.38.2              DelayedMatrixStats_1.18.0
+## [137] shiny_1.7.2               gtools_3.9.3             
+## [139] monocle_2.24.1            lifecycle_1.0.1          
+## [141] nlme_3.1-158              jsonlite_1.8.0           
+## [143] BiocNeighbors_1.14.0      viridisLite_0.4.0        
+## [145] fansi_1.0.3               pillar_1.8.0             
+## [147] lattice_0.20-45           ggrastr_1.0.1            
+## [149] KEGGREST_1.36.3           fastmap_1.1.0            
+## [151] httr_1.4.3                survival_3.3-1           
+## [153] glue_1.6.2                qlcMatrix_0.9.7          
+## [155] png_0.1-7                 bit_4.0.4                
+## [157] stringi_1.7.8             sass_0.4.2               
+## [159] blob_1.2.3                DESeq2_1.36.0            
+## [161] BiocSingular_1.12.0       caTools_1.18.2           
+## [163] memoise_2.0.1             irlba_2.3.5              
+## [165] future.apply_1.9.0</code></pre>
 
 </div>
 </div>

@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="prerequisites.html"/>
-<link rel="next" href="scrna-seq-data-1.html"/>
+<link rel="next" href="scrna-seq-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -163,7 +163,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="prerequisites.html"><a href="prerequisites.html#prereq"><i class="fa fa-check"></i><b>2.1</b> Data</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="prerequisites.html"><a href="prerequisites.html#bulk-rna-seq-data"><i class="fa fa-check"></i><b>2.1.1</b> Bulk RNA-seq data</a></li>
-<li class="chapter" data-level="2.1.2" data-path="prerequisites.html"><a href="prerequisites.html#scrna-seq-data"><i class="fa fa-check"></i><b>2.1.2</b> scRNA-seq data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="prerequisites.html"><a href="prerequisites.html#scranseqback"><i class="fa fa-check"></i><b>2.1.2</b> scRNA-seq data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="prerequisites.html"><a href="prerequisites.html#software"><i class="fa fa-check"></i><b>2.2</b> SOFTWARE</a></li>
 </ul></li>
@@ -183,16 +183,15 @@ div.csl-indent {
 <li class="chapter" data-level="3.8.3" data-path="bulk-rna-seq-analysis.html"><a href="bulk-rna-seq-analysis.html#gene-set-enrichment-analysis"><i class="fa fa-check"></i><b>3.8.3</b> Gene Set Enrichment Analysis</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html"><i class="fa fa-check"></i><b>4</b> scRNA-seq data</a>
+<li class="chapter" data-level="4" data-path="scrna-seq-data.html"><a href="scrna-seq-data.html"><i class="fa fa-check"></i><b>4</b> scRNA-seq data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html#background-1"><i class="fa fa-check"></i><b>4.1</b> Background</a></li>
-<li class="chapter" data-level="4.2" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html#tsne-plots"><i class="fa fa-check"></i><b>4.2</b> tSNE plots</a></li>
-<li class="chapter" data-level="4.3" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html#umap"><i class="fa fa-check"></i><b>4.3</b> uMAP</a></li>
-<li class="chapter" data-level="4.4" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html#differential-expression-analysis-between-clusters"><i class="fa fa-check"></i><b>4.4</b> Differential expression analysis between clusters</a></li>
-<li class="chapter" data-level="4.5" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html#heatmaps-1"><i class="fa fa-check"></i><b>4.5</b> Heatmaps</a></li>
-<li class="chapter" data-level="4.6" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html#feature-plots"><i class="fa fa-check"></i><b>4.6</b> Feature plots</a></li>
-<li class="chapter" data-level="4.7" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html#cell-annotation"><i class="fa fa-check"></i><b>4.7</b> Cell annotation</a></li>
-<li class="chapter" data-level="4.8" data-path="scrna-seq-data-1.html"><a href="scrna-seq-data-1.html#trajectory-analysis"><i class="fa fa-check"></i><b>4.8</b> Trajectory analysis</a></li>
+<li class="chapter" data-level="4.1" data-path="scrna-seq-data.html"><a href="scrna-seq-data.html#background-1"><i class="fa fa-check"></i><b>4.1</b> Background</a></li>
+<li class="chapter" data-level="4.2" data-path="scrna-seq-data.html"><a href="scrna-seq-data.html#tsne-plots"><i class="fa fa-check"></i><b>4.2</b> tSNE plots</a></li>
+<li class="chapter" data-level="4.3" data-path="scrna-seq-data.html"><a href="scrna-seq-data.html#umap"><i class="fa fa-check"></i><b>4.3</b> uMAP</a></li>
+<li class="chapter" data-level="4.4" data-path="scrna-seq-data.html"><a href="scrna-seq-data.html#heatmaps-1"><i class="fa fa-check"></i><b>4.4</b> Heatmaps</a></li>
+<li class="chapter" data-level="4.5" data-path="scrna-seq-data.html"><a href="scrna-seq-data.html#feature-plots"><i class="fa fa-check"></i><b>4.5</b> Feature plots</a></li>
+<li class="chapter" data-level="4.6" data-path="scrna-seq-data.html"><a href="scrna-seq-data.html#cell-annotation"><i class="fa fa-check"></i><b>4.6</b> Cell annotation</a></li>
+<li class="chapter" data-level="4.7" data-path="scrna-seq-data.html"><a href="scrna-seq-data.html#trajectory-analysis"><i class="fa fa-check"></i><b>4.7</b> Trajectory analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -219,7 +218,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 3</span> Bulk RNA-seq analysis<a href="bulk-rna-seq-analysis.html#bulk-rna-seq-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="background" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Background<a href="bulk-rna-seq-analysis.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Previous results from the <a href="https://chisangad.github.io/bulkRNAseqtut/index.html">Bulk RNA-seq analysis workshop</a> were saved in the “Workshop_RNAseq” directory on All staff share as an R-object “Counts2.RData” or can also be downloaded from <a href="">here</a>. Import this into R to run the rest of the analysis</p>
+<p>Previous results from the <a href="https://chisangad.github.io/bulkRNAseqtut/index.html">Bulk RNA-seq analysis workshop</a> were saved in the “Workshop_RNAseq” directory on All staff share as an R-object “Counts2.RData” or can also be downloaded from <a href="https://latrobeuni-my.sharepoint.com/:u:/g/personal/dchisanga_ltu_edu_au/ES_FZpzdwPNJq-0bphUD3PoBbU63E7wUBEW6pERaRUkhYg?e=SR7eu7">here</a>. Import this into R to run the rest of the analysis</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="bulk-rna-seq-analysis.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load the required package</span></span>
 <span id="cb2-2"><a href="bulk-rna-seq-analysis.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(limma)</span>
 <span id="cb2-3"><a href="bulk-rna-seq-analysis.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;Counts2.RData&quot;</span>) <span class="co"># loads the counts dataset</span></span></code></pre></div>
@@ -287,7 +286,8 @@ Figure 3.3: Volcano plot. Shows the relationship between fold-change and signifi
 </div>
 <div id="heatmaps" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Heatmaps<a href="bulk-rna-seq-analysis.html#heatmaps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Heatmaps are a great way of demonstrating the differences in the expression patterns between different conditions in your dataset. Here we use the <em>coolmap</em> function within the <strong>limma</strong> package which is an extension of the <em>heatmap.2</em> function within the <strong>gplots</strong> package. The heatmap below shows the expression pattern of the top 100 differentially expressed genes between CIS vs WT.</p>
+<p>Heatmaps are a great way of demonstrating the differences in the expression patterns between different conditions in your dataset. <em>In bulk RNA-seq analysis, columns represent samples and cell types in scRNA-seq analysis</em>.</p>
+<p>Here we use the <em>coolmap</em> function within the <strong>limma</strong> package which is an extension of the <em>heatmap.2</em> function within the <strong>gplots</strong> package. The heatmap below shows the expression pattern of the top 100 differentially expressed genes between CIS vs WT.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="bulk-rna-seq-analysis.html#cb9-1" aria-hidden="true" tabindex="-1"></a>heat.data <span class="ot">&lt;-</span> y<span class="sc">$</span>E[<span class="fu">head</span>(<span class="fu">rownames</span>(de.genes), <span class="at">n =</span> <span class="dv">100</span>), ]</span>
 <span id="cb9-2"><a href="bulk-rna-seq-analysis.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(heat.data) <span class="ot">&lt;-</span> targets<span class="sc">$</span>Sample</span>
 <span id="cb9-3"><a href="bulk-rna-seq-analysis.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(heat.data) <span class="ot">&lt;-</span> <span class="fu">head</span>(de.genes<span class="sc">$</span>Symbol, <span class="at">n =</span> <span class="dv">100</span>)</span>
@@ -296,8 +296,9 @@ Figure 3.3: Volcano plot. Shows the relationship between fold-change and signifi
 <span id="cb9-6"><a href="bulk-rna-seq-analysis.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">margin =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>),</span>
 <span id="cb9-7"><a href="bulk-rna-seq-analysis.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cexCol =</span> <span class="fl">0.8</span>,</span>
 <span id="cb9-8"><a href="bulk-rna-seq-analysis.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">lhei =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="dv">4</span>),</span>
-<span id="cb9-9"><a href="bulk-rna-seq-analysis.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">cexRow =</span> <span class="fl">0.6</span></span>
-<span id="cb9-10"><a href="bulk-rna-seq-analysis.html#cb9-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb9-9"><a href="bulk-rna-seq-analysis.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">cexRow =</span> <span class="fl">0.6</span>,</span>
+<span id="cb9-10"><a href="bulk-rna-seq-analysis.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">adjRow=</span><span class="dv">0</span></span>
+<span id="cb9-11"><a href="bulk-rna-seq-analysis.html#cb9-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:figheatmap"></span>
 <img src="Bioinfo-figures_files/figure-html/figheatmap-1.png" alt="Heatmap plot of differentially expressed genes in CIS vs WT" width="576" />
 <p class="caption">
@@ -320,16 +321,12 @@ Figure 3.4: Heatmap plot of differentially expressed genes in CIS vs WT
 </div>
 <div id="pathway-analysis" class="section level2 hasAnchor" number="3.8">
 <h2><span class="header-section-number">3.8</span> Pathway Analysis<a href="bulk-rna-seq-analysis.html#pathway-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>From the differential expression analysis there were some 3181 differentially expressed genes. This is quiet a long list of genes to interpret and nearly impossible to go through a gene at a time to gain any meaningful biological understanding. A common downstream analysis step is to understand pathways/gene networks that the genes are implicated in.</p>
+<p>From the differential expression analysis, there were some 3181 differentially expressed genes. This is quite a long list of genes to interpret and nearly impossible to go through a gene at a time to gain any meaningful biological understanding. A common downstream analysis step is to understand pathways/gene networks in that the genes are implicated.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="bulk-rna-seq-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a>enrich.pvalue<span class="ot">&lt;-</span><span class="fl">0.00001</span></span></code></pre></div>
 <div id="gene-ontology-enrichment" class="section level3 hasAnchor" number="3.8.1">
 <h3><span class="header-section-number">3.8.1</span> Gene Ontology enrichment<a href="bulk-rna-seq-analysis.html#gene-ontology-enrichment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Gene ontology (<a href="http://www.geneontology.org/" class="uri">http://www.geneontology.org/</a>) provides a controlled vocabulary for describing biological processes (BP ontology), molecular functions (MF ontology) and cellular components (CC ontology).</p>
-<p>The GO ontologies themselves are organism-independent; terms are associated with genes for a specific organism through direct experimentation or through sequence homology with another organism and its GO annotation.</p>
-<p>Terms are related to other terms through parent-child relationships in a directed acylic graph.</p>
-<p>You can use enrichment analysis as another way of drawing conclusions from your set of differentially expressed genes.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="bulk-rna-seq-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a>enrich.pvalue<span class="ot">&lt;-</span><span class="fl">0.00001</span></span></code></pre></div>
-<p>Here, we use the <em>goana</em> function within the <strong>limma</strong> package to test for enrichment of differentially expressed genes between the CIS vs WT. Note that the <em>p-values</em> returned by <em>goana</em> are <strong>unadjusted for multiple testing</strong>. It is therfore, advisable that if the results are to be published, only terms with very small p-values should be included. For instance, in the example below, only terms with a p-value &lt; 10^{-5} are retained.</p>
-<p>We use the output from the differential expression analysis and test for overrepresentation for the Up and Down regulated genes separately.</p>
+<p>Here, we use the <em>goana</em> function within the <strong>limma</strong> package to test for enrichment of differentially expressed genes between the CIS vs WT. Note that the <em>p-values</em> returned by <em>goana</em> are <strong>unadjusted for multiple testing</strong>. It is therefore, advisable that if the results are to be published, only terms with very small p-values should be included. For instance, in the example below, only terms with a p-value &lt; 10^{-5} are retained.</p>
+<p>We use the output from the differential expression analysis and test for over representation for the Up and Down-regulated genes separately.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="bulk-rna-seq-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;GO.db&quot;</span>))</span>
 <span id="cb13-2"><a href="bulk-rna-seq-analysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;GO.db&quot;</span>)</span>
 <span id="cb13-3"><a href="bulk-rna-seq-analysis.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GO.db)</span>
@@ -462,9 +459,10 @@ Figure 3.5: Enrichment plot. Top enrichments in either direction
 </div>
 <div id="gene-set-enrichment-analysis" class="section level3 hasAnchor" number="3.8.3">
 <h3><span class="header-section-number">3.8.3</span> Gene Set Enrichment Analysis<a href="bulk-rna-seq-analysis.html#gene-set-enrichment-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>GO and KEGG enrichment analysis uses the list of differentially expressed genes to test for over-representation of these genes. As such the results typically depend on the cut-offs used to get the differentially expressed genes.</p>
+<p>GO and KEGG enrichment analysis uses the list of differentially expressed genes to test for over-representation of these genes in GO terms and KEGG pathways respectively. As such the results typically depend on the cut-offs used to get the differentially expressed genes.</p>
 <p>Gene Set Enrichment Analysis is performed using <em>roast</em>, a gene set enrichment function within the <strong>limma</strong> package. Unlike above where we focused on a subset of genes(differentially genes), here all the genes in the set are used to test for gene expression signatures or pathways. A test is performed against the GO terms for demonstrative purposes, alternatively, if you wish to test against a specific gene set, this can quickly be done by importing that list.</p>
-<p>We then use <em>roast</em> to test for enrichment between CIS and WT. We use the design matrix ‘design’, the expression values ‘y’ and the contrast matrix ‘contr’ from the imported results to perform the gene set test and the GO term and gene map we created above.</p>
+<p>We then use <em>roast</em> to test for enrichment between CIS and WT. The design matrix ‘design’, the expression values ‘y’ and the contrast matrix ‘contr’ from the imported results are used to perform gene set test and the GO term enrichment.</p>
+<p>The gene set enrichment figures generated here for bulk RNA-seq data can also be used for scRNA-seq data.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="bulk-rna-seq-analysis.html#cb21-1" aria-hidden="true" tabindex="-1"></a>go.all<span class="ot">&lt;-</span>go.EntrezID[go.rst<span class="sc">$</span>GO.ID]</span>
 <span id="cb21-2"><a href="bulk-rna-seq-analysis.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(go.all)<span class="ot">&lt;-</span>go.rst<span class="sc">$</span>Term</span>
 <span id="cb21-3"><a href="bulk-rna-seq-analysis.html#cb21-3" aria-hidden="true" tabindex="-1"></a>roast.GSEA<span class="ot">&lt;-</span><span class="fu">roast</span>(y,<span class="at">index =</span> go.all,<span class="at">design =</span> design,<span class="at">contrast =</span> contr)</span>
@@ -484,8 +482,8 @@ Figure 3.5: Enrichment plot. Top enrichments in either direction
 ## mitotic sister chromatid segregation 0.0035 0.1253906       0.0135 0.06227709
 ## regulation of chromosome separation  0.0035 0.1253906       0.0160 0.06227709</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="bulk-rna-seq-analysis.html#cb23-1" aria-hidden="true" tabindex="-1"></a>term.test<span class="ot">&lt;-</span><span class="fu">rownames</span>(roast.GSEA)[<span class="dv">1</span>]</span></code></pre></div>
-<p>Next, we can visualize the gene set enrichment results using a barcode plot. The barcode plot is used to plot the positions of genes within a set in ranked list of statistics. The statistics are ranked from left to right ie. from smallest to largest.</p>
-<p>To do so, the gene identifies for the term should first be mapped to the index position of each gene in the expression matrix;</p>
+<p>Next, we can visualize the gene set enrichment results using a barcode plot. The barcode plot is used to plot the positions of genes within a set in a ranked list of statistics. The statistics are ranked from left to right ie. from smallest to largest.</p>
+<p>To do so, the gene identified for the term should first be mapped to the index position of each gene in the expression matrix;</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="bulk-rna-seq-analysis.html#cb24-1" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">rownames</span>(fit.contr) <span class="sc">%in%</span> go.all[[<span class="fu">rownames</span>(roast.GSEA)[<span class="dv">1</span>]]]</span>
 <span id="cb24-2"><a href="bulk-rna-seq-analysis.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barcodeplot</span>(</span>
 <span id="cb24-3"><a href="bulk-rna-seq-analysis.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  fit.contr<span class="sc">$</span>coefficients[, <span class="st">&quot;CISvsWT&quot;</span>],</span>
@@ -509,7 +507,7 @@ Figure 3.6: Barcode plot showing the enrichment of 90S preribosome in CS vs WT
         </div>
       </div>
 <a href="prerequisites.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="scrna-seq-data-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="scrna-seq-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

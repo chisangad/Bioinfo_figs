@@ -1,3 +1,9 @@
+fig:unnamed-chunk-4
+fig:figmd
+fig:figvolc
+fig:figheatmap
+fig:enrichplot
+fig:unnamed-chunk-15
 preface
 prerequisites
 prereq
